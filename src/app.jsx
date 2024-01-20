@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import '../src/assets/style.css';
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 const App = () => {
 	const [city, setCity] = React.useState('');
 
@@ -43,7 +45,7 @@ const App = () => {
 
 	async function fetchWeather(city) {
 		const response = await fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=355959699b808e06c554bb829c5962f2`
+			`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=` + API_KEY
 		);
 		const weather = await response.json();
 		return weather;
